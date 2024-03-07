@@ -13,9 +13,9 @@ services:
       - "27017:27017"
 
   mysql:
-    image: bitnami/mysql:8.0
+    image: mysql:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=deng
     volumes:
       - 'mysql_data:/Users/Shared/mysql'
     ports:
