@@ -6,6 +6,7 @@ import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { generateDocument } from './doc';
 
+declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -19,6 +20,12 @@ async function bootstrap() {
   generateDocument(app);
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
+
   await app.listen(3000);
 }
 bootstrap();
