@@ -1,5 +1,5 @@
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import * as packageConfig from './package.json';
+import * as packageConfig from '../package.json';
 
 export const generateDocument = (app) => {
   const options = new DocumentBuilder()
