@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { VersioningType } from '@nestjs/common';
-import { TransformInterceptor } from './common/interceptors/transform.interceptor';
-import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
-import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
+import { TransformInterceptor } from '../../../libs/comm/src/interceptors/transform.interceptor';
+import { AllExceptionsFilter } from '../../../libs/comm/src/exceptions/base.exception.filter';
+import { HttpExceptionFilter } from '../../../libs/comm/src/exceptions/http.exception.filter';
 import { generateDocument } from './doc';
 
 declare const module: any;
