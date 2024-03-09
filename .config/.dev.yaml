@@ -20,4 +20,5 @@ MYSQL_CONFIG:
   database: "material_test"
   entities: "mysql"
   logging: true
+  cache: true
   synchronize: true
