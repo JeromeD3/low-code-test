@@ -3,20 +3,28 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.mysql.entity';
+import { DepartmentService } from '../department/department.service';
 
 @Injectable()
 export class UserService {
   constructor(
     @Inject('USER_REPOSITORY')
     private userRepository: Repository<User>,
+    private departmentService: DepartmentService,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return this.userRepository.save(createUserDto);
+  async create(createUserDto: CreateUserDto) {
+    const dep = await this.departmentService.findOne(
+      createUserDto.departmentId,
+    );
+    return this.userRepository.save({
+      ...createUserDto,
+      department: dep,
+    });
   }
 
   findAll() {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['department'] });
   }
 
   findOne(id: number) {
@@ -28,6 +36,6 @@ export class UserService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.userRepository.delete(id);
   }
 }
