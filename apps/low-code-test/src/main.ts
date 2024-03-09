@@ -1,24 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { VersioningType } from '@nestjs/common';
-import { TransformInterceptor } from '../../../libs/comm/src/interceptors/transform.interceptor';
-import { AllExceptionsFilter } from '../../../libs/comm/src/exceptions/base.exception.filter';
-import { HttpExceptionFilter } from '../../../libs/comm/src/exceptions/http.exception.filter';
 import { generateDocument } from './doc';
+import { AllExceptionsFilter } from '@app/comm/exceptions/base.exception.filter';
+import { HttpExceptionFilter } from '@app/comm/exceptions/http.exception.filter';
 
 declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // 接口版本化管理
-  // app.enableVersioning({
-  //   defaultVersion: '1',
-  //   type: VersioningType.URI,
-  // });
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
 
   // 创建文档
   generateDocument(app);
-  app.useGlobalInterceptors(new TransformInterceptor());
+
+  // 异常过滤器
   app.useGlobalFilters(new AllExceptionsFilter(), new HttpExceptionFilter());
 
   // if (module.hot) {
