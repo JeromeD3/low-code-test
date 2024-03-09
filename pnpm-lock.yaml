@@ -29,6 +29,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      mongodb:
+        specifier: ^6.4.0
+        version: 6.4.0
       mongoose:
         specifier: ^8.2.1
         version: 8.2.1
@@ -49,7 +52,7 @@ importers:
         version: 1.12.4
       typeorm:
         specifier: ^0.3.20
-        version: 0.3.20(mysql2@3.9.2)(ts-node@10.9.2)
+        version: 0.3.20(mongodb@6.4.0)(mysql2@3.9.2)(ts-node@10.9.2)
       webpack:
         specifier: ^5.90.3
         version: 5.90.3
@@ -4092,6 +4095,38 @@ packages:
       mongodb-connection-string-url: 3.0.0
     dev: false
 
+  /mongodb@6.4.0:
+    resolution: {integrity: sha512-MdFHsyb1a/Ee0H3NmzWTSLqchacDV/APF0H6BNQvraWrOiIocys2EmTFZPgHxWhcfO94c1F34I9MACU7x0hHKA==}
+    engines: {node: '>=16.20.1'}
+    peerDependencies:
+      '@aws-sdk/credential-providers': ^3.188.0
+      '@mongodb-js/zstd': ^1.1.0
+      gcp-metadata: ^5.2.0
+      kerberos: ^2.0.1
+      mongodb-client-encryption: '>=6.0.0 <7'
+      snappy: ^7.2.2
+      socks: ^2.7.1
+    peerDependenciesMeta:
+      '@aws-sdk/credential-providers':
+        optional: true
+      '@mongodb-js/zstd':
+        optional: true
+      gcp-metadata:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      snappy:
+        optional: true
+      socks:
+        optional: true
+    dependencies:
+      '@mongodb-js/saslprep': 1.1.5
+      bson: 6.4.0
+      mongodb-connection-string-url: 3.0.0
+    dev: false
+
   /mongoose@8.2.1:
     resolution: {integrity: sha512-UgZZbXSJH0pdU936qj3FyVI+sBsMoGowFnL5R/RYrA50ayn6+ZYdVr8ehsRgNxRcMYwoNld5XzHIfkFRJTePEw==}
     engines: {node: '>=16.20.1'}
@@ -5336,7 +5371,7 @@ packages:
   /typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  /typeorm@0.3.20(mysql2@3.9.2)(ts-node@10.9.2):
+  /typeorm@0.3.20(mongodb@6.4.0)(mysql2@3.9.2)(ts-node@10.9.2):
     resolution: {integrity: sha512-sJ0T08dV5eoZroaq9uPKBoNcGslHBR4E4y+EBHs//SiGbblGe7IeduP/IH4ddCcj0qp3PHwDwGnuvqEAnKlq/Q==}
     engines: {node: '>=16.13.0'}
     hasBin: true
@@ -5404,6 +5439,7 @@ packages:
       dotenv: 16.4.1
       glob: 10.3.10
       mkdirp: 2.1.6
+      mongodb: 6.4.0
       mysql2: 3.9.2
       reflect-metadata: 0.2.1
       sha.js: 2.4.11

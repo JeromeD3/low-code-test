@@ -1,19 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { MongoRepository } from 'typeorm';
 import { CreateSiteDto } from './dto/create-site.dto';
 import { UpdateSiteDto } from './dto/update-site.dto';
+import { Site } from './entities/site.mongo.entity';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class SiteService {
+  constructor(
+    @Inject('SITE_REPOSITORY')
+    private siteRepository: MongoRepository<Site>,
+  ) {}
+
   create(createSiteDto: CreateSiteDto) {
-    return 'This action adds a new site';
+    return this.siteRepository.save(createSiteDto);
   }
 
   findAll() {
     return `This action returns all site`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} site`;
+  findOne(id: string) {
+    return this.siteRepository.findOne({
+      where: {
+        _id: new ObjectId(id),
+      },
+    });
   }
 
   update(id: number, updateSiteDto: UpdateSiteDto) {
