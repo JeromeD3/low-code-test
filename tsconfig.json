@@ -19,8 +19,12 @@
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
     "paths": {
-      "@app/comm": ["libs/comm/src"],
-      "@app/comm/*": ["libs/comm/src/*"]
+      "@app/comm": [
+        "libs/comm/src"
+      ],
+      "@app/comm/*": [
+        "libs/comm/src/*"
+      ]
     }
   }
 }
