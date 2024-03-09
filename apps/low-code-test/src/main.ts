@@ -11,10 +11,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // 接口版本化管理
-  app.enableVersioning({
-    defaultVersion: '1',
-    type: VersioningType.URI,
-  });
+  // app.enableVersioning({
+  //   defaultVersion: '1',
+  //   type: VersioningType.URI,
+  // });
 
   // 创建文档
   generateDocument(app);
