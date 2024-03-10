@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { getConfig } from './utils';
 import { UserModule } from './user/user.module';
 import { DepartmentModule } from './department/department.module';
+import { getConfig } from '@app/comm/utils';
 
 @Module({
   imports: [

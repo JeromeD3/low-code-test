@@ -1,5 +1,6 @@
-TEST_VALUE:
-  name: cookie
+GITGUB_CONFIG:
+  CLIENT_ID: 
+  CLIENT_SECRETS: 
 MONGODB_CONFIG:
   name: "ignition_test"              # 自定义次数据库链接名称
   type: mongodb                      # 数据库链接类型

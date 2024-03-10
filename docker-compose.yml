@@ -5,12 +5,12 @@ volumes:
   mysql_data:
 
 services:
-  mongo:
-    image: mongo:5.0.0-focal
-    volumes:
-      - 'mongodb_data:/Users/Shared/mongodb'
-    ports:
-      - "27017:27017"
+  # mongo:
+  #   image: mongo:5.0.0-focal
+  #   volumes:
+  #     - 'mongodb_data:/Users/Shared/mongodb'
+  #   ports:
+  #     - "27017:27017"
 
   mysql:
     image: mysql:latest
@@ -20,3 +20,11 @@ services:
       - 'mysql_data:/Users/Shared/mysql'
     ports:
       - "3306:3306"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - /Users/dengxiangbai/nginx/config:/etc/nginx/conf.d
+      - /Users/dengxiangbai/nginx/html:/usr/share/nginx/html
